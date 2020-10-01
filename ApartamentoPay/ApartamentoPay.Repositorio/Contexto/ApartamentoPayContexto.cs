@@ -25,6 +25,8 @@ namespace ApartamentoPay.Repositorio.Contexto
             modelBuilder.ApplyConfiguration(new ItemPedidoConfiguration());
             modelBuilder.ApplyConfiguration(new PedidoConfiguration());
             modelBuilder.ApplyConfiguration(new FormaPagamentoConfiguration());
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

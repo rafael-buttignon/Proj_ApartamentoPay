@@ -25,7 +25,8 @@ namespace ApartamentoPay.Web
             services.AddControllersWithViews();
             var connectionString = Configuration.GetConnectionString("ApartamentoPayDB");
             services.AddDbContext<ApartamentoPayContexto>(option =>
-                option.UseMySql(connectionString, 
+                option.UseLazyLoadingProxies()
+                .UseMySql(connectionString, 
                     m => m.MigrationsAssembly("ApartamentoPay.Repositorio")));
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

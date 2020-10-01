@@ -9,7 +9,20 @@ namespace ApartamentoPay.Repositorio.Config
     {
         public void Configure(EntityTypeBuilder<Apartamento> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(a => a.Id);
+
+            builder.Property(p => p.Nome)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            builder
+                .Property(p => p.Descricao)
+                .IsRequired()
+                .HasMaxLength(400);
+
+            builder
+                .Property(p => p.Preco)
+                .IsRequired();
         }
     }
 }

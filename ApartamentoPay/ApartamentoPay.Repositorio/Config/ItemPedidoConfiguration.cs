@@ -1,7 +1,6 @@
 ﻿using ApartamentoPay.Dominio.Entidades;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 
 namespace ApartamentoPay.Repositorio.Config
 {
@@ -9,7 +8,15 @@ namespace ApartamentoPay.Repositorio.Config
     {
         public void Configure(EntityTypeBuilder<ItemPedido> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(i => i.Id);
+
+            builder
+                .Property(i => i.ApartamentoId)
+                .IsRequired();
+
+            builder
+                .Property(i => i.Quantidade)
+                .IsRequired();
         }
     }
 }

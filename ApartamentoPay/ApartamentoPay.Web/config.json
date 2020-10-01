@@ -1,6 +1,6 @@
 {
   "ConnectionStrings": {
     "SqlServerConnection": "",
-    "ApartamentoPayDB": "server=localhost;uid=root;pwd=admin;database=ApartamentoPayDB"
+    "ApartamentoPayDB": "server=localhost;uid=root;pwd=33849290;database=ApartamentoPayDB"
   }
 }
