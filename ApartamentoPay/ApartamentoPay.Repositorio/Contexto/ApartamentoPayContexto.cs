@@ -26,6 +26,14 @@ namespace ApartamentoPay.Repositorio.Contexto
             modelBuilder.ApplyConfiguration(new PedidoConfiguration());
             modelBuilder.ApplyConfiguration(new FormaPagamentoConfiguration());
 
+            modelBuilder.Entity<FormaPagamento>().HasData(new FormaPagamento() { Id = 1, Nome = "Boleto", Descricao = "Forma de Pagamento Boleto" });
+            modelBuilder.Entity<FormaPagamento>().HasData(new FormaPagamento() { Id = 2, Nome = "Cartao De Credito", Descricao = "Forma de Pagamento Cartão de Credito" });
+            modelBuilder.Entity<FormaPagamento>().HasData(new FormaPagamento() { Id = 3, Nome = "Deposito", Descricao = "Forma de Pagamento Deposito" });
+            modelBuilder.Entity<FormaPagamento>().HasData(new FormaPagamento() { Id = 4, Nome = "Boleto", Descricao = "Forma de Pagamento Boleto" });
+            modelBuilder.Entity<FormaPagamento>().HasData(new FormaPagamento() { Id = 5, Nome = "Cartão De Credito", Descricao = "Forma de Pagamento Cartão De Credito" });
+            modelBuilder.Entity<FormaPagamento>().HasData(new FormaPagamento() { Id = 6, Nome = "Boleto", Descricao = "Forma de Pagamento Boletinho" });
+
+
             base.OnModelCreating(modelBuilder);
         }
     }

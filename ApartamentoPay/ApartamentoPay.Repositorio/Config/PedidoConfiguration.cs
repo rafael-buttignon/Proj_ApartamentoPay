@@ -41,6 +41,8 @@ namespace ApartamentoPay.Repositorio.Config
             builder
                 .Property(p => p.NumeroApartamento)
                 .IsRequired();
+
+            builder.HasOne(p => p.FormaPagamento);
         }
     }
 }
