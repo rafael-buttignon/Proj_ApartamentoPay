@@ -11,7 +11,7 @@ namespace ApartamentoPay.Repositorio.Repositorios
 
         public BaseRepositorio(ApartamentoPayContexto apartamentoPayContexto)
         {
-            ApartamentoPayContexto = apartamentoPayContexto;
+            ApartamentoPayContexto = apartamentoPayContexto; 
         }
 
         public void Adicionar(TEntity entity)

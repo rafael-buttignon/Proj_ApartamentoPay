@@ -1,10 +1,16 @@
+using ApartamentoPay.Dominio.Contratos;
 using ApartamentoPay.Repositorio.Contexto;
+using ApartamentoPay.Repositorio.Repositorios;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace ApartamentoPay.Web
 {
@@ -28,6 +34,18 @@ namespace ApartamentoPay.Web
                 option.UseLazyLoadingProxies()
                 .UseMySql(connectionString, 
                     m => m.MigrationsAssembly("ApartamentoPay.Repositorio")));
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApartamentoPay", Version = "v1", });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+                c.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
+            });
+
+            services.AddScoped<IApartamentoRepositorio, ApartamentoRepositorio>();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -57,6 +75,13 @@ namespace ApartamentoPay.Web
             }
 
             app.UseRouting();
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.RoutePrefix = string.Empty;
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+            });
 
             app.UseEndpoints(endpoints =>
             {
