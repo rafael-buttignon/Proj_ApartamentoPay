@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApartamentoComponent } from './apartamento/apartamento.component';
+import { LoginComponent } from './usuario/login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ApartamentoComponent } from './apartamento/apartamento.component';
     HomeComponent,
     CounterComponent,
     ApartamentoComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -28,7 +30,7 @@ import { ApartamentoComponent } from './apartamento/apartamento.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'produto', component: ApartamentoComponent }
+      { path: 'apartamento', component: ApartamentoComponent }
     ])
   ],
   providers: [],
