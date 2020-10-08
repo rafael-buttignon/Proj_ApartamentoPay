@@ -21,6 +21,7 @@ namespace ApartamentoPay.Web.Controllers
         /// </summary>
         /// <returns code="200"> A lista de apartamentos foi obtida com sucesso.</returns>
         /// <returns code="400"> A lista de apartamentos não foi obtida com sucesso.</returns>
+        /// 
         [HttpGet]
         public IActionResult Get()
         {

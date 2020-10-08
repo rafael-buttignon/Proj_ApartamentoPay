@@ -10,7 +10,7 @@
         public override void Validate()
         {
 
-            if (Preco > 0)
+            if (Preco < 0)
                 AdicionarCritica("Preco Invalido");
         }
     }

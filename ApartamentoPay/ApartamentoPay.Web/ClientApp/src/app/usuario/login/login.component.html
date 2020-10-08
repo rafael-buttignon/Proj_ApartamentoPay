@@ -1,1 +1,56 @@
-<p>testeeee</p>
+<div class="sidenav">
+         <div class="login-main-text">
+            <h1>Apartment Pay<br></h1>
+            <h4>Conheça nossos Apartamentos.</h4>
+         </div>
+      </div>
+      <div class="main">
+         <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+               <form>
+                  <div class="form-group">
+                     <label for="inputEmail">Email</label>
+                     <input type="email" id="inputEmail" 
+                     name="email" 
+                     class="form-control" 
+                     #email="ngModel"
+                     [ngClass] = "{
+                        'is-invalid':email.invalid && (email.dirty || email.touched), 
+                        'is-valid': email.valid && (email.dirty || email.touched)}"
+                     placeholder="Informe o seu Email" 
+                     [(ngModel)]="usuario.email"
+                     email
+                     required>
+                     <div class="invalid-feedback mb-2" *ngIf="email.invalid && (email.dirty || email.touched)">
+                        <div *ngIf="email.errors.required">
+                           Email deve ser preenchido
+                        </div>
+                        <div *ngIf="email.erros.email">
+                           Email no formato invalido
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label for="inputSenha">Senha</label>
+                     <input type="password" id="inputSenha" 
+                     name="senha" 
+                     class="form-control" 
+                     #senha="ngModel"
+                     [ngClass] = "{
+                        'is-invalid':email.invalid && (senha.dirty || senha.touched), 
+                        'is-valid': email.valid && (senha.dirty || senha.touched)}"
+                     placeholder="Senha" 
+                     [(ngModel)]="usuario.senha" 
+                     required>
+                     <div class="invalid-feedback mb-2" *ngIf="senha.invalid && (senha.dirty || senha.touched)">
+                        <div *ngIf="senha.errors.required">
+                           Senha deve ser preenchida
+                        </div>
+                     </div>
+                  </div>
+                  <button type="submit"  (click)="entrar()" class="btn btn-black">Login</button>
+                  <button type="submit" class="btn btn-secondary">Register</button>
+               </form>
+            </div>
+         </div>
+      </div>
