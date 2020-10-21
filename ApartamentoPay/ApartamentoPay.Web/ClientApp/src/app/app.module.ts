@@ -12,6 +12,8 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApartamentoComponent } from './apartamento/apartamento.component';
 import { LoginComponent } from './usuario/login/login.component';
 import { GuardaRotas } from './autorizacao/guarda.rotas';
+import { UsuarioService } from './usuario/usuario.service';
+import { ApartamentoService } from './apartamento/apartamento.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,10 @@ import { GuardaRotas } from './autorizacao/guarda.rotas';
 
     ])
   ],
-  providers: [],
+  providers: [
+          UsuarioService,
+          ApartamentoService
+        ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
