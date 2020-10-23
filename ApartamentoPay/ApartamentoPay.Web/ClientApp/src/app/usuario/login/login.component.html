@@ -48,8 +48,15 @@
                         </div>
                      </div>
                   </div>
-                  <button type="submit"  (click)="entrar()" class="btn btn-black">Login</button>
-                  <button type="submit" class="btn btn-secondary">Register</button>
+                  <button type="submit"  (click)="entrar()" [disabled]="ativar_spinner" class="btn btn-black">
+                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+                     Login
+                  </button>
+                  <br>
+                  <div class="alert alert-danger" *ngIf="mensagem">
+                        {{mensagem}}
+                  </div>
+                  <!-- <button type="submit" class="btn btn-secondary">Register</button> -->
                </form>
             </div>
          </div>

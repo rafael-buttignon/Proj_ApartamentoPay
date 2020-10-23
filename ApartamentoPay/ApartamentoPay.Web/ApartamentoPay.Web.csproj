@@ -29,6 +29,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\WeatherForecastController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ApartamentoPay.Repositorio\ApartamentoPay.Repositorio.csproj" />
   </ItemGroup>
 

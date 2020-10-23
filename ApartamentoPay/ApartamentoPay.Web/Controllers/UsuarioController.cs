@@ -1,4 +1,5 @@
-﻿using ApartamentoPay.Dominio.Entidades;
+﻿using ApartamentoPay.Dominio.Contratos;
+using ApartamentoPay.Dominio.Entidades;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -7,6 +8,12 @@ namespace ApartamentoPay.Web.Controllers
 	[Route("api/[Controller]")]
 	public class UsuarioController : Controller
     {
+		private readonly IUsuarioRepositorio _usuarioRepositorio;
+		public UsuarioController(IUsuarioRepositorio usuarioRepositorio)
+		{
+			_usuarioRepositorio = usuarioRepositorio;
+		}
+
 
 		[HttpGet]
 		public ActionResult Get()
@@ -26,10 +33,11 @@ namespace ApartamentoPay.Web.Controllers
 		{
 			try
 			{
-				if(usuario.Email == "rafa@teste.com" && usuario.Senha == "abc123")
-				{
-					return Ok(usuario);
-				}
+				var usuarioRetorno = _usuarioRepositorio.Obter(usuario.Email, usuario.Senha);
+				
+				if(usuarioRetorno != null)
+					return Ok(usuarioRetorno);
+
 				return BadRequest("Usuário ou senha inválido!");
 			}
 			catch (Exception ex)
