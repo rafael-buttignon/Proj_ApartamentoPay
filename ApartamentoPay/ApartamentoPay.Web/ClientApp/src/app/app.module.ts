@@ -14,6 +14,7 @@ import { LoginComponent } from './usuario/login/login.component';
 import { GuardaRotas } from './autorizacao/guarda.rotas';
 import { UsuarioService } from './usuario/usuario.service';
 import { ApartamentoService } from './apartamento/apartamento.service';
+import { CadastroComponent } from './usuario/cadastro/cadastro.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ApartamentoService } from './apartamento/apartamento.service';
     CounterComponent,
     ApartamentoComponent,
     FetchDataComponent,
-    LoginComponent
+    LoginComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -34,7 +36,8 @@ import { ApartamentoService } from './apartamento/apartamento.service';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'apartamento', component: ApartamentoComponent, canActivate:[GuardaRotas] },
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'novo-usuario', component: CadastroComponent}
 
     ])
   ],

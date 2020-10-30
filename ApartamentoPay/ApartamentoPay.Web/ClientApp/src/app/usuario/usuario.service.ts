@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { triggerAsyncId } from 'async_hooks';
 import { Observable } from 'rxjs';
 import { Usuario } from '../models/usuario';
 
@@ -40,6 +41,7 @@ export class UsuarioService {
   }
 
   public verificarUsuario(usuario: Usuario): Observable<Usuario>{
+    
     const headers = new HttpHeaders().set('content-type', 'application/json');
     var body = {
       email: usuario.email,
@@ -48,5 +50,18 @@ export class UsuarioService {
     //this.baseURL = raiz do site que pode ser exemplo.: http://www.apartamentopay.com/
     return this.http.post<Usuario>(this.baseURL + "api/usuario/verificarUsuario", body, {headers});
     // api/usuario/verificar
+  }
+
+  public cadastrarUsuario(usuario: Usuario): Observable<Usuario>{
+    
+    const headers = new HttpHeaders().set('content-type', 'application/json');
+    
+    var body = {
+      email: usuario.email,
+      senha: usuario.senha,
+      nome: usuario.nome,
+      sobreNome: usuario.sobreNome
+    }
+    return this.http.post<Usuario>(this.baseURL + "api/usuario", body, { headers });
   }
 }
