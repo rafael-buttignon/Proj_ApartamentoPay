@@ -104,6 +104,9 @@
              <div class="alert alert-danger" *ngIf="mensagem">
                    {{mensagem}}
              </div>
+             <div class="alert alert=success" *ngIf="usuarioCadastrado">
+               Usuario cadastrado com sucesso!<a class="alert-link" [routerLink] ='["/entrar"]'>Clique aqui</a> para entrar no sistema!
+             </div>
              <!-- <button type="submit" class="btn btn-secondary">Register</button> -->
           </form>
        </div>

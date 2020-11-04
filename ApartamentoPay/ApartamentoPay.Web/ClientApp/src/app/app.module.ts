@@ -35,7 +35,7 @@ import { CadastroComponent } from './usuario/cadastro/cadastro.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'apartamento', component: ApartamentoComponent, canActivate:[GuardaRotas] },
+      { path: 'apartamento', component: ApartamentoComponent },
       { path: 'login', component: LoginComponent },
       { path: 'novo-usuario', component: CadastroComponent}
 
@@ -48,3 +48,6 @@ import { CadastroComponent } from './usuario/cadastro/cadastro.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// { path: 'apartamento', component: ApartamentoComponent, canActivate:[GuardaRotas] },
+

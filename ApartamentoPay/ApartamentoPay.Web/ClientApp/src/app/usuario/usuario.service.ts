@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { triggerAsyncId } from 'async_hooks';
 import { Observable } from 'rxjs';
 import { Usuario } from '../models/usuario';
 
@@ -34,6 +33,9 @@ export class UsuarioService {
     this._usuario = null;
   }
 
+  get headers() : HttpHeaders {
+    return new HttpHeaders().set('content-type', 'application/json');
+  }
 
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) { 
     this.baseURL = baseUrl;
@@ -53,15 +55,6 @@ export class UsuarioService {
   }
 
   public cadastrarUsuario(usuario: Usuario): Observable<Usuario>{
-    
-    const headers = new HttpHeaders().set('content-type', 'application/json');
-    
-    var body = {
-      email: usuario.email,
-      senha: usuario.senha,
-      nome: usuario.nome,
-      sobreNome: usuario.sobreNome
-    }
-    return this.http.post<Usuario>(this.baseURL + "api/usuario", body, { headers });
+    return this.http.post<Usuario>(this.baseURL + "api/usuario", JSON.stringify(usuario), { headers: this.headers });
   }
 }

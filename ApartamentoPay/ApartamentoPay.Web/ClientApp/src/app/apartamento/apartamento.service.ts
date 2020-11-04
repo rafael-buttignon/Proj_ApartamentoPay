@@ -1,9 +1,50 @@
-import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Inject, Injectable, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Apartamento } from '../models/apartamento';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ApartamentoService {
+export class ApartamentoService implements OnInit {
 
-  constructor() { }
+  private _baseUrl: string;
+  public apartamentos: Apartamento[]; 
+
+
+  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) { 
+    this._baseUrl = baseUrl;
+  }
+
+  ngOnInit(): void {
+    this.apartamentos = [];
+  }
+
+  get headers() : HttpHeaders {
+    return new HttpHeaders().set('content-type', 'application/json');
+  }
+
+  public cadastrar(apartamento: Apartamento): Observable<Apartamento> {
+    
+    return this.http.post<Apartamento>(this._baseUrl + "api/apartamento/cadastrar", JSON.stringify(apartamento), { headers: this.headers });
+  }
+
+  public salvar(apartamento: Apartamento): Observable<Apartamento> {
+  
+    return this.http.post<Apartamento>(this._baseUrl + "api/apartamento/salvar", JSON.stringify(apartamento), { headers: this.headers });
+  }
+
+  public deletar(apartamento: Apartamento): Observable<Apartamento> {
+    
+    return this.http.post<Apartamento>(this._baseUrl + "api/apartamento/deletar", JSON.stringify(apartamento), { headers: this.headers });
+  }
+
+  public obterTodosApartamentos(): Observable<Apartamento[]> {
+    
+    return this.http.get<Apartamento[]>(this._baseUrl + "api/apartamento");
+  }
+
+  public obterApartamento(apartamentoId: number): Observable<Apartamento>{
+    return this.http.get<Apartamento>(this._baseUrl + "api/apartamento/obterPorId");
+  }
 }
