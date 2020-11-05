@@ -16,22 +16,23 @@ export class CadastroComponent implements OnInit {
 
   constructor(private usuarioServico: UsuarioService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.usuario = new Usuario();
   }
 
   	public cadastrar(){
+      this.ativar_spinner = true;
        this.usuarioServico.cadastrarUsuario(this.usuario)
            .subscribe(
              usuarioJson => { 
               this.usuarioCadastrado = true;
               this.mensagem = "";
+              this.ativar_spinner = false;
              },
              e => { 
               this.mensagem = e.error;
-
+              this.ativar_spinner = false;
              }
            );
     }
-
 }

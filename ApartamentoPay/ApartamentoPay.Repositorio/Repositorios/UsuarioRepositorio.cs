@@ -16,5 +16,10 @@ namespace ApartamentoPay.Repositorio.Repositorios
         {
             return ApartamentoPayContexto.Usuarios.FirstOrDefault(u => u.Email == email && u.Senha == senha);
         }
+
+        public Usuario Obter(string email)
+        {
+            return ApartamentoPayContexto.Usuarios.FirstOrDefault(u => u.Email == email);
+        }
     }
 }
