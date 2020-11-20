@@ -44,6 +44,7 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\src\app\servicos\" />
+    <Folder Include="wwwroot\arquivos\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
