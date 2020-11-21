@@ -28,7 +28,7 @@ export class ApartamentoService implements OnInit {
 
   public cadastrar(apartamento: Apartamento): Observable<Apartamento> {
     
-    return this.http.post<Apartamento>(this._baseUrl + "api/apartamento/cadastrar", JSON.stringify(apartamento), { headers: this.headers });
+    return this.http.post<Apartamento>(this._baseUrl + "api/apartamento", JSON.stringify(apartamento), { headers: this.headers });
   }
 
   public salvar(apartamento: Apartamento): Observable<Apartamento> {
@@ -50,9 +50,9 @@ export class ApartamentoService implements OnInit {
     return this.http.get<Apartamento>(this._baseUrl + "api/apartamento/obterPorId");
   }
 
-  public enviarArquivo(arquivoSelecionado: File) : Observable<boolean> {
+  public enviarArquivo(arquivoSelecionado: File) : Observable<string> {
     const formData: FormData = new FormData();
     formData.append("arquivoEnviado", arquivoSelecionado, arquivoSelecionado.name)
-    return this.http.post<boolean>(this._baseUrl + "api/apartamento/enviarArquivo", formData);
+    return this.http.post<string>(this._baseUrl + "api/apartamento/enviarArquivo", formData);
   }
 }

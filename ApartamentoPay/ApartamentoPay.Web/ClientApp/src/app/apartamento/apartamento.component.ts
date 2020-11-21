@@ -10,6 +10,8 @@ import { ApartamentoService } from './apartamento.service';
 export class ApartamentoComponent implements OnInit {
   public apartamento: Apartamento
   public arquivoSelecionado: File;
+  public ativar_spinner: boolean;
+  public mensagem: string;
 
   constructor(private apartamentoServico: ApartamentoService) { }
 
@@ -19,10 +21,13 @@ export class ApartamentoComponent implements OnInit {
 
   public inputChange(files: FileList){
     this.arquivoSelecionado = files.item(0);
+    this.ativar_spinner = true;
     this.apartamentoServico.enviarArquivo(this.arquivoSelecionado)
       .subscribe(
-        retorno => { 
-          console.log(retorno);
+        nomeArquivo => { 
+          this.apartamento.nomeArquivo = nomeArquivo;
+          console.log(nomeArquivo);
+          this.ativar_spinner = false;
         }, 
         e => { 
           console.log(e.error)
@@ -30,7 +35,6 @@ export class ApartamentoComponent implements OnInit {
   }
 
   public cadastrar(){
-    // this.apartamento
     this.apartamentoServico.cadastrar(this.apartamento)
       .subscribe(
         apartamentoJson => {
@@ -38,8 +42,8 @@ export class ApartamentoComponent implements OnInit {
          },
         e => { 
           console.log(e.error);
+          this.mensagem = e.error;
         }
       );
   }
-
 }

@@ -19,9 +19,13 @@ namespace ApartamentoPay.Dominio.Entidades
         {
             MensagemValidacao.Add(mensagem);
         }
+        public string ObterMensagensValidacao()
+        {
+            return string.Join(". ", MensagemValidacao);
+        }
 
         public abstract void Validate();
-        protected bool EhValido
+        public bool EhValido
         {
             get { return !MensagemValidacao.Any(); }
         }

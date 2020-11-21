@@ -54,6 +54,11 @@ namespace ApartamentoPay.Web.Controllers
         {
             try
             {
+                apartamento.Validate();
+                if (!apartamento.EhValido)
+                {
+                    return BadRequest(apartamento.ObterMensagensValidacao());
+                }
                 _apartamentoRepositorio.Adicionar(apartamento);
                 return Created("api/apartamento", apartamento);
             }
@@ -80,7 +85,7 @@ namespace ApartamentoPay.Web.Controllers
                     formFile.CopyTo(streamArquivo);
                 }
 
-                return Ok("Arquivo Enviado com sucesso!");
+                return Json(novoNomeArquivo);
             }
             catch (Exception ex)
             {
