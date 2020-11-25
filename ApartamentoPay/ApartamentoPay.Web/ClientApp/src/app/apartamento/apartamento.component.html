@@ -60,7 +60,7 @@
     </div>
 </div>
 
-<button class="btn btn-primary mb-2" (click)="cadastrar" [disabled]="ativar_spinner"><span class="spinner-border spinner-border-sm" *ngIf="ativar_spinner"></span>
+<button class="btn btn-primary mb-2" (click)="cadastrar()" [disabled]="ativar_spinner"><span class="spinner-border spinner-border-sm" *ngIf="ativar_spinner"></span>
     Cadastrar
 </button>
 <div class="alert alert-danger col-md-4" *ngIf="mensagem">

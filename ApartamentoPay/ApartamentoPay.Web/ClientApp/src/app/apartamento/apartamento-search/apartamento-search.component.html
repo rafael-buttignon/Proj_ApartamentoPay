@@ -1,0 +1,28 @@
+<h1 class="h4 titulo mb-2">Pesquisa de Apartamento</h1><br>
+<p *ngIf="!apartamentos">Carregando Apartamentos...</p>
+
+<button class="btn btn-primary mb-2" (click)="adicionarProduto">Adicionar Apartamento</button>
+<table class="table table-hover" *ngIf="apartamentos">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preco</th>
+            <th>Imagem</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of apartamentos">
+            <td style="width:10%">{{p.nome}}</td>
+            <td style="width:40%">{{p.descricao}}</td>
+            <td style="width:10%">R$ {{p.preco}}</td>
+            <td><img src="../../../../../arquivos/{{p.nomeArquivo}}" style="width:40%;height: 10%;"/></td>
+            <td ><a href="#">Editar</a></td>
+            <td><a href="#">Deletar</a></td>
+
+
+        </tr>
+    </tbody>
+</table>

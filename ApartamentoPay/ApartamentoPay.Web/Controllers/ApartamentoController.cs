@@ -36,7 +36,7 @@ namespace ApartamentoPay.Web.Controllers
         {
             try
             {
-                return Ok(_apartamentoRepositorio.ObterTodos());
+                return Json(_apartamentoRepositorio.ObterTodos());
             }
             catch (Exception ex)
             {
@@ -49,6 +49,7 @@ namespace ApartamentoPay.Web.Controllers
         /// </summary>
         /// <returns code="201"> Foi adicionado um apartamento com sucesso. </returns>
         /// <returns code="400"> Não foi adicionado um apartamento. </returns>
+
         [HttpPost]
         public IActionResult Post([FromBody]Apartamento apartamento)
         {

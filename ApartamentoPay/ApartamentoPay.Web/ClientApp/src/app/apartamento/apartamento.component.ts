@@ -35,15 +35,26 @@ export class ApartamentoComponent implements OnInit {
   }
 
   public cadastrar(){
+    this.ativarEspera();
     this.apartamentoServico.cadastrar(this.apartamento)
       .subscribe(
         apartamentoJson => {
-          console.log(apartamentoJson);
+          console.log(apartamentoJson,"testeeee")
+          this.desativarEspera();
          },
         e => { 
           console.log(e.error);
           this.mensagem = e.error;
+          this.desativarEspera();
         }
       );
+  }
+
+  public ativarEspera(){
+    this.ativar_spinner = true;
+  }
+
+  public desativarEspera(){
+    this.ativar_spinner = false;
   }
 }
