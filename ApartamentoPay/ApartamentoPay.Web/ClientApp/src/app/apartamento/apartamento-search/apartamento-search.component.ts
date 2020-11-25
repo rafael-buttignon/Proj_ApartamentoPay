@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Apartamento } from 'src/app/models/apartamento';
 import { ApartamentoService } from '../apartamento.service';
 
@@ -15,7 +16,7 @@ export class ApartamentoSearchComponent implements OnInit {
     ngOnInit() {
     }
 
-  constructor(private apartamentoService: ApartamentoService) {
+  constructor(private apartamentoService: ApartamentoService, private router: Router) {
     this.getApartamentos();
   }
 
@@ -31,7 +32,24 @@ export class ApartamentoSearchComponent implements OnInit {
   }
 
   public adicionarProduto(){
+    this.router.navigate(['/apartamento']);
+  }
 
+  public deletarApartamento(apartamento: Apartamento){
+    var retorno = confirm("Desaja realmente deletar o apartamento selecionado ?");
+    if(retorno == true){
+      this.apartamentoService.deletar(apartamento).subscribe(
+        apartamentos => {
+          this.apartamentos = apartamentos;
+        }, e => {
+          console.log(e.errors);
+        });
+    }
+  }
+
+  public editarApartamento(apartamento: Apartamento){
+    sessionStorage.setItem('apartamentoSessao', JSON.stringify(apartamento));
+    this.router.navigate(['/apartamento']);
   }
 
 }

@@ -36,9 +36,9 @@ export class ApartamentoService implements OnInit {
     return this.http.post<Apartamento>(this._baseUrl + "api/apartamento/salvar", JSON.stringify(apartamento), { headers: this.headers });
   }
 
-  public deletar(apartamento: Apartamento): Observable<Apartamento> {
+  public deletar(apartamento: Apartamento): Observable<Apartamento[]> {
     
-    return this.http.post<Apartamento>(this._baseUrl + "api/apartamento/deletar", JSON.stringify(apartamento), { headers: this.headers });
+    return this.http.post<Apartamento[]>(this._baseUrl + "api/apartamento/deletar", JSON.stringify(apartamento), { headers: this.headers });
   }
 
   public obterTodosApartamentos(): Observable<Apartamento[]> {

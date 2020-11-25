@@ -69,6 +69,21 @@ namespace ApartamentoPay.Web.Controllers
             }
         }
 
+        [HttpPost("Deletar")]
+        public IActionResult Deletar([FromBody] Apartamento apartamento)
+        {
+            try
+            {
+                // apartamento recebido do FromBody, deve ter a propriedade ID > 0
+                _apartamentoRepositorio.Remover(apartamento);
+                return Json(_apartamentoRepositorio.ObterTodos());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
         [HttpPost("EnviarArquivo")]
         public IActionResult EnviarArquivo()
         {

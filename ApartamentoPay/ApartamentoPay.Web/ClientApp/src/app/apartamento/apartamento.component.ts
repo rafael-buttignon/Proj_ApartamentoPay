@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Apartamento } from '../models/apartamento';
 import { ApartamentoService } from './apartamento.service';
 
@@ -13,7 +14,7 @@ export class ApartamentoComponent implements OnInit {
   public ativar_spinner: boolean;
   public mensagem: string;
 
-  constructor(private apartamentoServico: ApartamentoService) { }
+  constructor(private apartamentoServico: ApartamentoService, private router: Router) { }
 
   ngOnInit() {
     this.apartamento = new Apartamento();
@@ -41,6 +42,7 @@ export class ApartamentoComponent implements OnInit {
         apartamentoJson => {
           console.log(apartamentoJson,"testeeee")
           this.desativarEspera();
+          this.router.navigate(['/pesquisar-apartamento'])
          },
         e => { 
           console.log(e.error);
