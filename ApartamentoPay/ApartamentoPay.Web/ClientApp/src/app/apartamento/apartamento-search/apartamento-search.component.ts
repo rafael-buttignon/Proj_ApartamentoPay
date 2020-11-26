@@ -48,7 +48,7 @@ export class ApartamentoSearchComponent implements OnInit {
   }
 
   public editarApartamento(apartamento: Apartamento){
-    sessionStorage.setItem('apartamentoSessao', JSON.stringify(apartamento));
+    sessionStorage.setItem('apartamentoSession', JSON.stringify(apartamento));
     this.router.navigate(['/apartamento']);
   }
 

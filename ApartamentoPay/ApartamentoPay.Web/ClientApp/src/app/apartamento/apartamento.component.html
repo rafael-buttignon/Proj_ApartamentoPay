@@ -59,10 +59,15 @@
         <label for="inputFile" class="custom-file-label">Escolha uma Imagem</label>
     </div>
 </div>
+<div class="form-inline">
 
-<button class="btn btn-primary mb-2" (click)="cadastrar()" [disabled]="ativar_spinner"><span class="spinner-border spinner-border-sm" *ngIf="ativar_spinner"></span>
-    Cadastrar
-</button>
+    <button class="btn btn-primary mb-2" style="margin-right: 5px;" (click)="cadastrar()" [disabled]="ativar_spinner"><span class="spinner-border spinner-border-sm" *ngIf="ativar_spinner"></span>
+        Cadastrar
+    </button>
+    <button class="btn btn-secondary mb-2" [routerLink]='["/pesquisar-apartamento"]'><span class="spinner-border spinner-border-sm" *ngIf="ativar_spinner"></span>
+        Cancelar
+    </button>
+</div>
 <div class="alert alert-danger col-md-4" *ngIf="mensagem">
     {{mensagem}}
 </div>

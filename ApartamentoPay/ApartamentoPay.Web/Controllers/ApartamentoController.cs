@@ -60,7 +60,15 @@ namespace ApartamentoPay.Web.Controllers
                 {
                     return BadRequest(apartamento.ObterMensagensValidacao());
                 }
-                _apartamentoRepositorio.Adicionar(apartamento);
+                if(apartamento.Id > 0)
+                {
+                    _apartamentoRepositorio.Atualizar(apartamento);
+                }
+                else
+                {
+                    _apartamentoRepositorio.Adicionar(apartamento);
+                }
+
                 return Created("api/apartamento", apartamento);
             }
             catch (Exception ex)

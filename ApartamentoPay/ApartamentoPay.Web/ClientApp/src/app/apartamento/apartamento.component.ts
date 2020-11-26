@@ -17,7 +17,12 @@ export class ApartamentoComponent implements OnInit {
   constructor(private apartamentoServico: ApartamentoService, private router: Router) { }
 
   ngOnInit() {
-    this.apartamento = new Apartamento();
+    var apartamentoSession = sessionStorage.getItem('apartamentoSession');
+    if(apartamentoSession){
+      this.apartamento = JSON.parse(apartamentoSession);
+    }else{
+      this.apartamento = new Apartamento();
+    }
   }
 
   public inputChange(files: FileList){
@@ -41,6 +46,8 @@ export class ApartamentoComponent implements OnInit {
       .subscribe(
         apartamentoJson => {
           console.log(apartamentoJson,"testeeee")
+          sessionStorage.setItem("apartamentoSession", "");
+          this.apartamento = null;
           this.desativarEspera();
           this.router.navigate(['/pesquisar-apartamento'])
          },
