@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
+import { TruncateModule } from 'ng2-truncate';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -16,6 +16,7 @@ import { UsuarioService } from './usuario/usuario.service';
 import { ApartamentoService } from './apartamento/apartamento.service';
 import { CadastroComponent } from './usuario/cadastro/cadastro.component';
 import { ApartamentoSearchComponent } from './apartamento/apartamento-search/apartamento-search.component';
+import { LojaPesquisaComponent } from './loja/loja-pesquisa/loja-pesquisa.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +28,14 @@ import { ApartamentoSearchComponent } from './apartamento/apartamento-search/apa
     FetchDataComponent,
     LoginComponent,
     CadastroComponent,
-    ApartamentoSearchComponent
+    ApartamentoSearchComponent,
+    LojaPesquisaComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    TruncateModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
