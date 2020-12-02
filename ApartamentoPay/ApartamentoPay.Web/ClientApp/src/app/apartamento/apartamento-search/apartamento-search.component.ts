@@ -32,11 +32,12 @@ export class ApartamentoSearchComponent implements OnInit {
   }
 
   public adicionarProduto(){
+    sessionStorage.setItem('apartamentoSession', "");
     this.router.navigate(['/apartamento']);
   }
 
   public deletarApartamento(apartamento: Apartamento){
-    var retorno = confirm("Desaja realmente deletar o apartamento selecionado ?");
+    var retorno = confirm("Deseja realmente deletar o apartamento selecionado ?");
     if(retorno == true){
       this.apartamentoService.deletar(apartamento).subscribe(
         apartamentos => {

@@ -17,6 +17,9 @@ import { ApartamentoService } from './apartamento/apartamento.service';
 import { CadastroComponent } from './usuario/cadastro/cadastro.component';
 import { ApartamentoSearchComponent } from './apartamento/apartamento-search/apartamento-search.component';
 import { LojaPesquisaComponent } from './loja/loja-pesquisa/loja-pesquisa.component';
+import { LojaApartamentoComponent } from './loja/loja-apartamento/loja-apartamento.component';
+import { LojaEfetivarComponent } from './loja/efetivar/loja-efetivar/loja-efetivar.component';
+import { LojaCarrinhoComprasComponent } from './loja/carrinho/loja-carrinho-compras/loja-carrinho-compras.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { LojaPesquisaComponent } from './loja/loja-pesquisa/loja-pesquisa.compon
     LoginComponent,
     CadastroComponent,
     ApartamentoSearchComponent,
-    LojaPesquisaComponent
+    LojaPesquisaComponent,
+    LojaApartamentoComponent,
+    LojaEfetivarComponent,
+    LojaCarrinhoComprasComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -43,7 +49,10 @@ import { LojaPesquisaComponent } from './loja/loja-pesquisa/loja-pesquisa.compon
       { path: 'apartamento', component: ApartamentoComponent },
       { path: 'login', component: LoginComponent },
       { path: 'novo-usuario', component: CadastroComponent},
-      { path: 'pesquisar-apartamento', component: ApartamentoSearchComponent}
+      { path: 'pesquisar-apartamento', component: ApartamentoSearchComponent},
+      { path: 'loja-apartamento', component: LojaApartamentoComponent},
+      { path: 'loja-efetivar', component: LojaEfetivarComponent}
+
 
     ])
   ],

@@ -27,11 +27,15 @@
         'is-valid': descricao.valid && (descricao.dirty || descricao.touched)}"
        [(ngModel)]="apartamento.descricao"
        #descricao="ngModel" 
-       required/>
+       required
+       minlength="50"/>
 
 <div class="invalid-feedback mb-2" *ngIf="descricao.invalid && (descricao.dirty || descricao.touched) ">
     <div *ngIf="descricao.errors.required">
             Descricao do apartamento é de preenchimento obrigatório.
+    </div>
+    <div *ngIf="descricao.errors.minlength">
+        Campo deve ter no mínimo 50 caracteres.
     </div>
 </div>
 
