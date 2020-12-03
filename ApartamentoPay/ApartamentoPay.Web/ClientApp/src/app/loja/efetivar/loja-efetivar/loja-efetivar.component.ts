@@ -19,4 +19,20 @@ export class LojaEfetivarComponent implements OnInit {
     this.apartamentos = this.carrinhoCompras.obterApartamentos();
   }
 
+  public atualizarPreco(apartamento: Apartamento, quantidade: number){
+    if(!apartamento.precoOriginal){
+      apartamento.precoOriginal = apartamento.preco;
+    }
+    if(quantidade <= 0){
+      quantidade = 1;
+      apartamento.quantidade = quantidade;
+    }
+    apartamento.preco = apartamento.precoOriginal * quantidade;
+    this.carrinhoCompras.atualizar(this.apartamentos);
+  }
+
+  public remover(apartamento: Apartamento){
+    this.carrinhoCompras.removerApartamento(apartamento);
+    this.apartamentos = this.carrinhoCompras.obterApartamentos();
+  }
 }

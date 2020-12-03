@@ -36,6 +36,15 @@ export class LojaCarrinhoComprasComponent implements OnInit {
   }
 
   public removerApartamento(apartamento: Apartamento){
+    var apartamentoLocaStorage = localStorage.getItem("apartamentoLocaStorage");
+    if(apartamentoLocaStorage){
+      this.apartamentos = JSON.parse(apartamentoLocaStorage);
+      this.apartamentos = this.apartamentos.filter(p => p.id != apartamento.id);
+      localStorage.setItem("apartamentoLocaStorage", JSON.stringify(this.apartamentos));
+    }
+  }
 
+  public atualizar(apartamento: Apartamento[]){
+    localStorage.setItem("apartamentoLocaStorage", JSON.stringify(apartamento));
   }
 }
