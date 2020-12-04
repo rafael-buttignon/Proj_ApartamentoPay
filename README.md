@@ -31,7 +31,7 @@
 - TypeScript
 - MySql
 
-## 💻
+## 💻 Professor
 
-- Jederson Donizete Zuchi
-
+- Jederson Donizete Zuchi 
+ 
